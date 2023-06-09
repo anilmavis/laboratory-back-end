@@ -1,0 +1,29 @@
+@startuml
+!theme sketchy
+entity Report {
+  * id : number <<generated>>
+  --
+  * patient_id : number
+  * diagnosis_title : text
+  * diagnosis_detail : text
+  * date : date
+  * photo_path : text
+  * laborant_id : number <<FK>>
+}
+entity Patient {
+  * id : number <<generated>>
+  --
+  * first_name : text
+  * last_name : text
+  * tc : text
+}
+Report }|--|| Patient
+entity Laborant {
+  * id : number <<generated>>
+  --
+  * first_name : text
+  * last_name : text
+  * hospital_id : number <<FK>>
+}
+Report }|--|| Laborant
+@enduml
