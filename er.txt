@@ -23,7 +23,7 @@ entity Laborant {
   --
   * first_name : text
   * last_name : text
-  * hospital_id : number <<FK>>
+  * hospital_id : number
 }
 Report }|--|| Laborant
 @enduml

@@ -1,4 +1,4 @@
 # laboratory
 laboratory reporting project for Spring Boot
 
-![er](https://github.com/anilmavis/laboratory/assets/77068958/2479c218-fdd4-4912-a385-3ca444179060)
+![er](https://github.com/anilmavis/laboratory/assets/77068958/eed8cc6b-f240-4711-bb78-06d5c48add52)

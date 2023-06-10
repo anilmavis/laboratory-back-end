@@ -1,0 +1,34 @@
+package io.github.anilmavis.laboratory.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.github.anilmavis.laboratory.model.Patient;
+import io.github.anilmavis.laboratory.service.PatientService;
+
+@RestController
+@RequestMapping(path = "api/v1/patient")
+public class PatientController {
+    private PatientService service;
+
+    @Autowired
+    public PatientController(PatientService service) {
+        this.service = service;
+    }
+
+    @GetMapping
+    public List<Patient> getAll() {
+        return service.getAll();
+    }
+
+    @PostMapping
+    public void insert(@RequestBody Patient patient) {
+        service.insert(patient);
+    }
+}

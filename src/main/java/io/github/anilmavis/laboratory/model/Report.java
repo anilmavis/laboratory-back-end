@@ -1,4 +1,4 @@
-package io.github.anilmavis.laboratory;
+package io.github.anilmavis.laboratory.model;
 
 import java.util.Date;
 
@@ -33,33 +33,33 @@ public class Report {
     private Report() {
     }
 
-	public long getId() {
-		return id;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public Patient getPatient() {
-		return patient;
-	}
+    public Patient getPatient() {
+        return patient;
+    }
 
-	public String getDiagnosisTitle() {
-		return diagnosisTitle;
-	}
+    public String getDiagnosisTitle() {
+        return diagnosisTitle;
+    }
 
-	public String getDiagnosisDetail() {
-		return diagnosisDetail;
-	}
+    public String getDiagnosisDetail() {
+        return diagnosisDetail;
+    }
 
-	public Date getDate() {
-		return date;
-	}
+    public Date getDate() {
+        return date;
+    }
 
-	public String getPhotoPath() {
-		return photoPath;
-	}
+    public String getPhotoPath() {
+        return photoPath;
+    }
 
-	public Laborant getLaborant() {
-		return laborant;
-	}
+    public Laborant getLaborant() {
+        return laborant;
+    }
 
     @Override
     public String toString() {
