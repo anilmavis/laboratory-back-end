@@ -21,10 +21,15 @@ public class PatientService {
         return repository.findAll();
     }
 
-    public void insert(Patient patient) {
+    public Patient insert(Patient patient) {
         if (repository.findByTc(patient.getTc()).isPresent()) {
             throw new IllegalStateException("TC already exists");
         }
         repository.save(patient);
+        return patient;
+    }
+
+    public void delete(long id) {
+        repository.deleteById(id);
     }
 }
