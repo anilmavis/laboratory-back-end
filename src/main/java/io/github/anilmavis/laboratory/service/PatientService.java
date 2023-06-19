@@ -32,4 +32,8 @@ public class PatientService {
     public void delete(long id) {
         repository.deleteById(id);
     }
+
+    public void put(Patient patient) {
+        repository.save(patient);
+    }
 }

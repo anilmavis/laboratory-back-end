@@ -27,4 +27,12 @@ public class LaborantService {
         }
         repository.save(laborant);
     }
+
+    public void delete(long id) {
+        repository.deleteById(id);
+    }
+
+    public void put(Laborant laborant) {
+        repository.save(laborant);
+    }
 }
