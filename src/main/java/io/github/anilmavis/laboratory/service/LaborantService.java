@@ -33,6 +33,9 @@ public class LaborantService {
     }
 
     public void put(Laborant laborant) {
+        if (!repository.findById(laborant.getId()).isPresent()) {
+            throw new IllegalStateException("ID does not exist");
+        }
         repository.save(laborant);
     }
 }

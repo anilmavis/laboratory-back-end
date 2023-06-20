@@ -34,6 +34,9 @@ public class PatientService {
     }
 
     public void put(Patient patient) {
+        if (!repository.findById(patient.getId()).isPresent()) {
+            throw new IllegalStateException("ID does not exist");
+        }
         repository.save(patient);
     }
 }

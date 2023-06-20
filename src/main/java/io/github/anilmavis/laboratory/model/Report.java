@@ -2,10 +2,15 @@ package io.github.anilmavis.laboratory.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Report {
@@ -13,12 +18,21 @@ public class Report {
     @GeneratedValue
     private long id;
     @ManyToOne
+    @JoinColumn(name = "patient_id")
     Patient patient;
+    @NotNull
+    @NotEmpty
     String diagnosisTitle;
+    @NotNull
+    @NotEmpty
     String diagnosisDetail;
+    @CreatedDate
     Date date;
+    @NotNull
+    @NotEmpty
     String photoPath;
     @ManyToOne
+    @JoinColumn(name = "laborant_id")
     Laborant laborant;
 
     public Report(Patient patient, String diagnosisTitle, String diagnosisDetail, Date date, String photoPath, Laborant laborant) {

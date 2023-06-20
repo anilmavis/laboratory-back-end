@@ -7,17 +7,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 public class Laborant {
     @Id
     @GeneratedValue
     private long id;
+    @NotNull
+    @NotBlank
     private String firstName;
+    @NotNull
+    @NotBlank
     private String lastName;
-    @Column(nullable = false, unique = true)
+    @NotNull
+    @NotBlank
+    @Column(unique = true)
     private String hospitalId;
-    @OneToMany
+    @OneToMany(mappedBy = "laborant")
     private List<Report> reports;
 
     public Laborant(String firstName, String lastName, String hospitalId) {
