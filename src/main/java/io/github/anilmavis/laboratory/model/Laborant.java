@@ -2,6 +2,8 @@ package io.github.anilmavis.laboratory.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class Laborant {
     @NotBlank
     @Column(unique = true)
     private String hospitalId;
+    @JsonIgnore
     @OneToMany(mappedBy = "laborant")
     private List<Report> reports;
 
@@ -55,10 +58,5 @@ public class Laborant {
 
     public List<Report> getReports() {
         return reports;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Laborant [id = %d, firstName = '%s', lastName = '%s', hospitalId = '%s']", id, firstName, lastName, hospitalId);
     }
 }

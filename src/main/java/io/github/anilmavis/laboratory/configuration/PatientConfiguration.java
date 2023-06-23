@@ -11,13 +11,12 @@ import io.github.anilmavis.laboratory.repository.PatientRepository;
 
 @Configuration
 public class PatientConfiguration {
-	@Bean
-	public CommandLineRunner populatePatients(PatientRepository repository) throws Exception {
+    @Bean
+    public CommandLineRunner populatePatients(PatientRepository repository) throws Exception {
         return (args) -> {
-            List<Patient> patients = List.of(new Patient("socrates", "athens", "55555555555"),
-                                             new Patient("plato", "lina", "55555555554"),
-                                             new Patient("lorem", "ipsum", "55555555533"));
+            List<Patient> patients = List.of(new Patient("John", "Doe", "61104071808"),
+                                             new Patient("Jane", "Smith", "44969282510"));
             repository.saveAll(patients);
         };
-	}
+    }
 }

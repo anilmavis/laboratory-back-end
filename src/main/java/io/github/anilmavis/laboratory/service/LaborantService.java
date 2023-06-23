@@ -21,11 +21,11 @@ public class LaborantService {
         return repository.findAll();
     }
 
-    public void insert(Laborant laborant) {
+    public Laborant insert(Laborant laborant) {
         if (repository.findByHospitalId(laborant.getHospitalId()).isPresent()) {
             throw new IllegalStateException("hospital ID already exists");
         }
-        repository.save(laborant);
+        return repository.save(laborant);
     }
 
     public void delete(long id) {

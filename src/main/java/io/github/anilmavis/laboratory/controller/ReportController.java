@@ -31,8 +31,8 @@ public class ReportController {
     }
 
     @PostMapping
-    public void insert(@RequestBody Report report) {
-        service.insert(report);
+    public Report insert(@RequestBody Report report) {
+        return service.insert(report);
     }
 
     @DeleteMapping("{id}")

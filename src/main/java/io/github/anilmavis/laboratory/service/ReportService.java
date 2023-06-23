@@ -21,8 +21,8 @@ public class ReportService {
         return repository.findAll();
     }
 
-    public void insert(Report report) {
-        repository.save(report);
+    public Report insert(Report report) {
+        return repository.save(report);
     }
 
     public void delete(long id) {

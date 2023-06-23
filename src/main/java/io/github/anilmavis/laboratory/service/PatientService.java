@@ -25,8 +25,7 @@ public class PatientService {
         if (repository.findByTc(patient.getTc()).isPresent()) {
             throw new IllegalStateException("TC already exists");
         }
-        repository.save(patient);
-        return patient;
+        return repository.save(patient);
     }
 
     public void delete(long id) {

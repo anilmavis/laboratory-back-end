@@ -31,8 +31,8 @@ public class LaborantController {
     }
 
     @PostMapping
-    public void insert(@RequestBody Laborant laborant) {
-        service.insert(laborant);
+    public Laborant insert(@RequestBody Laborant laborant) {
+        return service.insert(laborant);
     }
 
     @DeleteMapping("{id}")

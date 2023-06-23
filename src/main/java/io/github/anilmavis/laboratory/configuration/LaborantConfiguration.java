@@ -11,13 +11,12 @@ import io.github.anilmavis.laboratory.repository.LaborantRepository;
 
 @Configuration
 public class LaborantConfiguration {
-	@Bean
-	public CommandLineRunner poopulateLaborants(LaborantRepository repository) throws Exception {
+    @Bean
+    public CommandLineRunner poopulateLaborants(LaborantRepository repository) throws Exception {
         return (args) -> {
-            List<Laborant> laborants = List.of(new Laborant("Laborant", "1", "1234567"),
-                                             new Laborant("Laborant", "2", "1234568"),
-                                             new Laborant("Laborant", "3", "1234569"));
+            List<Laborant> laborants = List.of(new Laborant("John", "Doe", "6110407"),
+                                               new Laborant("Jane", "Smith", "4496928"));
             repository.saveAll(laborants);
         };
-	}
+    }
 }
