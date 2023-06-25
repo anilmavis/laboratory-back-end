@@ -35,4 +35,18 @@ public class ReportService {
         }
         repository.save(report);
     }
+
+    public List<Report> findAll(String patientFirstName,
+                                String patientLastName,
+                                String tc,
+                                String laborantFirstName,
+                                String laborantLastName,
+                                String hospitalId) {
+        return repository.search(patientFirstName,
+                                  patientLastName,
+                                  tc,
+                                  laborantFirstName,
+                                  laborantLastName,
+                                  hospitalId);
+    }
 }
