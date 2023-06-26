@@ -37,13 +37,13 @@ public class PatientController {
     }
 
     @DeleteMapping("{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id") long id) {
         service.delete(id);
     }
 
     @PutMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void put(@RequestBody Patient patient) {
         service.put(patient);
     }

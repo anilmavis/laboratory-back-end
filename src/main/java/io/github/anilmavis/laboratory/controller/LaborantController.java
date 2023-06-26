@@ -36,13 +36,13 @@ public class LaborantController {
         return service.insert(laborant);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") long id) {
         service.delete(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping
     public void put(@RequestBody Laborant laborant) {
         service.put(laborant);

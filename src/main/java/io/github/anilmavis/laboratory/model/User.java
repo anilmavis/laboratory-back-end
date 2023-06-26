@@ -29,6 +29,7 @@ public class User {
     @NotEmpty
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
+    
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles;
 

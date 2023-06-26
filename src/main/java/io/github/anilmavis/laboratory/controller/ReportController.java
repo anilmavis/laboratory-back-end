@@ -37,13 +37,13 @@ public class ReportController {
         return service.insert(report);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("{id}")
     public void delete(@PathVariable("id") long id) {
         service.delete(id);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     @PutMapping
     public void put(@RequestBody Report report) {
         service.put(report);
