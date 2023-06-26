@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import io.github.anilmavis.laboratory.model.User;
@@ -12,10 +13,12 @@ import io.github.anilmavis.laboratory.repository.UserRepository;
 @Service
 public class UserService {
     private UserRepository repository;
+    private PasswordEncoder passwordEncoder;
     
     @Autowired
-    public UserService(UserRepository repository) {
+    public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Optional<User> findByUsername(String username) {
@@ -30,6 +33,7 @@ public class UserService {
         if (repository.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalStateException("Username already exists");
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
 
@@ -41,6 +45,7 @@ public class UserService {
         if (!repository.findById(user.getId()).isPresent()) {
             throw new IllegalStateException("ID does not exist");
         }
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         repository.save(user);
     }
 }
