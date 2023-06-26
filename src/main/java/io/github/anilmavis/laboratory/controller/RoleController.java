@@ -13,29 +13,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.anilmavis.laboratory.model.User;
-import io.github.anilmavis.laboratory.service.UserService;
+import io.github.anilmavis.laboratory.model.Role;
+import io.github.anilmavis.laboratory.service.RoleService;
 
 @RestController
-@RequestMapping(path = "api/v1/user")
-public class UserController {
-    private UserService service;
+@RequestMapping(path = "api/v1/role")
+public class RoleController {
+    private RoleService service;
 
     @Autowired
-    public UserController(UserService service) {
+    public RoleController(RoleService service) {
         this.service = service;
     }
 
     @GetMapping
-    public List<User> getAll() {
+    public List<Role> getAll() {
         return service.getAll();
     }
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public User insert(@RequestBody User user) {
-        System.out.println(user.getRoles());
-        return service.insert(user);
+    public Role insert(@RequestBody Role role) {
+        return service.insert(role);
     }
 
     @DeleteMapping("{id}")
@@ -46,7 +45,7 @@ public class UserController {
 
     @PutMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public void put(@RequestBody User user) {
-        service.put(user);
+    public void put(@RequestBody Role role) {
+        service.put(role);
     }
 }
