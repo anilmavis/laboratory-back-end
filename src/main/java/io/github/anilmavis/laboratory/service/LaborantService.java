@@ -25,6 +25,10 @@ public class LaborantService {
         if (repository.findByHospitalId(laborant.getHospitalId()).isPresent()) {
             throw new IllegalStateException("hospital ID already exists");
         }
+
+        if (!checkId(laborant.getHospitalId())) {
+            throw new IllegalArgumentException("Invalid hospital ID");
+        }
         return repository.save(laborant);
     }
 
@@ -36,6 +40,14 @@ public class LaborantService {
         if (!repository.findById(laborant.getId()).isPresent()) {
             throw new IllegalStateException("ID does not exist");
         }
+
+        if (!checkId(laborant.getHospitalId())) {
+            throw new IllegalArgumentException("Invalid hospital ID");
+        }
         repository.save(laborant);
+    }
+
+    private boolean checkId(String id) {
+        return id.matches("[0-9]{7}");
     }
 }
