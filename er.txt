@@ -15,15 +15,29 @@ entity Patient {
   --
   * first_name : text
   * last_name : text
-  * tc : text
+  * tc : text <<UNIQUE>>
 }
-Report }|--|| Patient
+Report }o--|| Patient
 entity Laborant {
   * id : number <<generated>>
   --
   * first_name : text
   * last_name : text
-  * hospital_id : number
+  * hospital_id : number <<UNIQUE>>
 }
-Report }|--|| Laborant
+Report }o--|| Laborant
+entity User {
+  * id : number <<generated>>
+  --
+  * patient_id : number
+  * username : text <<UNIQUE>>
+  * password : text
+  * role_id : number <<FK>>
+}
+entity Role {
+  * id : number <<generated>>
+  --
+  * name : text <<UNIQUE>>
+}
+User }o--|{ Role
 @enduml
