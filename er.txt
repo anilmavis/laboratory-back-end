@@ -7,7 +7,7 @@ entity Report {
   * diagnosis_title : text
   * diagnosis_detail : text
   * date : date
-  * photo_path : text
+  * photo : text
   * laborant_id : number <<FK>>
 }
 entity Patient {
@@ -17,7 +17,7 @@ entity Patient {
   * last_name : text
   * tc : text <<UNIQUE>>
 }
-Report }o--|| Patient
+Report }|--|| Patient
 entity Laborant {
   * id : number <<generated>>
   --
@@ -25,13 +25,17 @@ entity Laborant {
   * last_name : text
   * hospital_id : number <<UNIQUE>>
 }
-Report }o--|| Laborant
+Report }|--|| Laborant
 entity User {
   * id : number <<generated>>
   --
-  * patient_id : number
   * username : text <<UNIQUE>>
   * password : text
+}
+entity User_Role {
+  * id : number <<generated>>
+  --
+  * user_id : number <<FK>>
   * role_id : number <<FK>>
 }
 entity Role {
@@ -39,5 +43,6 @@ entity Role {
   --
   * name : text <<UNIQUE>>
 }
-User }o--|{ Role
+User_Role }|--|| User
+User_Role }|--|| Role
 @enduml
