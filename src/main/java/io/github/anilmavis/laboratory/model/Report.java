@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ import jakarta.validation.constraints.NotNull;
 public class Report {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     
     @ManyToOne
     @JoinColumn(name = "patient_id")
@@ -37,8 +38,7 @@ public class Report {
     @CreatedDate
     private Date date;
     @Lob
-    private String photoPath;
-    
+    private String photo;
     @ManyToOne
     @JoinColumn(name = "laborant_id")
     private Laborant laborant;
@@ -53,7 +53,7 @@ public class Report {
     private Report() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -73,11 +73,39 @@ public class Report {
         return date;
     }
 
-    public String getPhotoPath() {
-        return photoPath;
+    public String getPhoto() {
+        return photo;
     }
 
     public Laborant getLaborant() {
         return laborant;
     }
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+
+	public void setDiagnosisTitle(String diagnosisTitle) {
+		this.diagnosisTitle = diagnosisTitle;
+	}
+
+	public void setDiagnosisDetail(String diagnosisDetail) {
+		this.diagnosisDetail = diagnosisDetail;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public void setLaborant(Laborant laborant) {
+		this.laborant = laborant;
+	}
 }

@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 public class Laborant {
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     @NotNull
     @NotBlank
     private String firstName;
@@ -40,7 +40,7 @@ public class Laborant {
     private Laborant() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -59,4 +59,24 @@ public class Laborant {
     public List<Report> getReports() {
         return reports;
     }
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setHospitalId(String hospitalId) {
+		this.hospitalId = hospitalId;
+	}
+
+	public void setReports(List<Report> reports) {
+		this.reports = reports;
+	}
 }

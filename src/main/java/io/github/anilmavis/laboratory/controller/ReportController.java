@@ -1,5 +1,6 @@
 package io.github.anilmavis.laboratory.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,15 @@ public class ReportController {
                                patientFirstName, patientLastName, tc,
                                laborantFirstName, laborantLastName, hospitalId
                                );
+    }
+
+    @GetMapping("sortAsc")
+    public List<Report> sortByDateAsc() {
+        return service.sortByDateAsc();
+    }
+
+    @GetMapping("sortDesc")
+    public List<Report> sortByDateDesc() {
+        return service.sortByDateDesc();
     }
 }

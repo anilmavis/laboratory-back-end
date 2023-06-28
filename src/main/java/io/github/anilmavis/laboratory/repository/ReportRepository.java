@@ -1,5 +1,6 @@
 package io.github.anilmavis.laboratory.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,4 +29,8 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
                         String laborantLastName,
                         String hospitalId
                         );
+
+    List<Report> findAllByOrderByDateAsc();
+
+    List<Report> findAllByOrderByDateDesc();
 }
