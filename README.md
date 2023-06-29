@@ -32,7 +32,7 @@ java -jar laboratory-0.0.1-SNAPSHOT.jar
 ```
 ## System Architecture
 ### Tests
-Tthere are unit tests but no integration tests currently, since the functionality is tested via Postman.
+Tthere are unit tests but no integration tests currently, since the functionality is tested via Postman. Run ```./mvnw test``` to execute the unit tests.
 ### Authorisation
 Since Basic Auth is used, the login credentials is sent for every request. Thus, HTTPS is recommended. Also, to improve it, JWT based auth can be added. The default credentials in the database are user:user and admin:admin. There are two roles, USER and ADMIN.
 ### Database
