@@ -11,22 +11,24 @@ Date, A Photo of the Physical Report in .png / .jpg Format)
 * Users must login to the system with username and password.
 * It should include an authorisation mechanism. For example standard users create and associate records, but not delete and edit them. Administrator can create all to carry out actions. In addition, the standard users cannot create or edit existing users, they can only view them.
 ## System Requirements
-* **JDK 17**: It is required to build and run the project.
+* **JDK 17**: It is required to build and run the project. It can be installed on Debian 11 with the following command:
+```sh
+sudo apt install openjdk-17-jdk
+```
 * **Maven**: It is required to be in the PATH only if `mvn` is used instead of the wrapper `./mvnw` while building and running. It can be installed on Debian based GNU/Linux distributions by running the below command:
 ```sh
-sudo apt install mvn
+sudo apt install maven
 ```
 ## How to Build
 ```sh
-./mvnw spring-boot:build
+./mvnw package
 ```
+Then, a .jar file will be created in the target directory.
 ## How to Run
 ```sh
 ./mvnw spring-boot:run
 ```
-Then, the server listens on port 8080. http://localhost:8080
-
-Or, find the .jar file in the releases and run the following command:
+Then, the server listens on port 8080 (http://localhost:8080). Or, find the .jar file in the releases and run the following command:
 ```sh
 java -jar laboratory-0.0.1-SNAPSHOT.jar
 ```
