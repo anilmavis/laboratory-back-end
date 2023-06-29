@@ -37,7 +37,7 @@ Finally, run the front-end.
 ### Repositories
 Since they extend JpaRepository of Spring to gain all functionality, they are straight-forward. However, ReportRepository is important because it contains the necessary method annotated by SQL Query for searching purpose.
 ### Services
-Service layer normally contains the business logic, but in this basic software most of the logic is in PatientService and LaborantService, since the format and validity of TC and hospital ID are checked here. The other service methods directly use repository methods because the other validations (whether null, unique or empty) are handled automatically by the column constraint annotations of the models.
+Service layer normally contains the business logic, but in this basic software most of the logic is in PatientService and LaborantService, since the format and validity of TC and hospital ID are checked here. The other service methods directly use repository methods because the other validations (whether null, unique or empty) are handled automatically by the column constraint annotations of the models. Also, some fields in models have JsonIgnore annotation to avoid infinite recursion caused by bidirectional relationships.
 ### Controllers
 All controllers use api/v1/ prefix in their request path. GET requests are used to fetch all from the database or for searching reports. The other sensitive operations use POST. The PreAuthorize annotation is used to check if the user has necesaary authority to do specific operations such as delete and edit. This way, only admins can run such methods. Sorting in ascending order may not be required, since the IDs of the reports indirectly represents the created date.
 ### Tests

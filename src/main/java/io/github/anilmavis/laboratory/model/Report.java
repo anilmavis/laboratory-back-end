@@ -4,9 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +14,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -25,15 +23,14 @@ public class Report {
     @Id
     @GeneratedValue
     private Long id;
-    
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String diagnosisTitle;
     @NotNull
-    @NotEmpty
+    @NotBlank
     private String diagnosisDetail;
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
