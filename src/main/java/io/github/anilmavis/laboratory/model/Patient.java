@@ -60,23 +60,23 @@ public class Patient {
         return reports;
     }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setTc(String tc) {
-		this.tc = tc;
-	}
+    public void setTc(String tc) {
+        this.tc = tc;
+    }
 
-	public void setReports(List<Report> reports) {
-		this.reports = reports;
-	}
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
+    }
 }

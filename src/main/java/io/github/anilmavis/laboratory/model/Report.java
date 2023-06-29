@@ -82,31 +82,31 @@ public class Report {
         return laborant;
     }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 
-	public void setDiagnosisTitle(String diagnosisTitle) {
-		this.diagnosisTitle = diagnosisTitle;
-	}
+    public void setDiagnosisTitle(String diagnosisTitle) {
+        this.diagnosisTitle = diagnosisTitle;
+    }
 
-	public void setDiagnosisDetail(String diagnosisDetail) {
-		this.diagnosisDetail = diagnosisDetail;
-	}
+    public void setDiagnosisDetail(String diagnosisDetail) {
+        this.diagnosisDetail = diagnosisDetail;
+    }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
-	public void setLaborant(Laborant laborant) {
-		this.laborant = laborant;
-	}
+    public void setLaborant(Laborant laborant) {
+        this.laborant = laborant;
+    }
 }
