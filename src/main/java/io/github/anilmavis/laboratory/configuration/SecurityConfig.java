@@ -53,7 +53,6 @@ public class SecurityConfig {
             io.github.anilmavis.laboratory.model.User user = new io.github.anilmavis.laboratory.model.User("user", passwordEncoder().encode("user"), Set.of(userRole));
             io.github.anilmavis.laboratory.model.User admin = new io.github.anilmavis.laboratory.model.User("admin", passwordEncoder().encode("admin"), Set.of(adminRole));
             repository.saveAll(Arrays.asList(user, admin));
-            System.out.println(repository.findAll());
         };
     }
 }
