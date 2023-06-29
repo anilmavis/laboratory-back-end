@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -29,11 +31,11 @@ public class PatientServiceTest {
 
     @BeforeEach
     void init() {
-        service = new PatientService(repository);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    void testGetAll() {
+    void getAll_returnsListOfPatients() {
         // prepare test data
         List<Patient> patients = new ArrayList<>();
         patients.add(new Patient("John", "Doe", "61104071808"));
@@ -47,33 +49,23 @@ public class PatientServiceTest {
     }
 
     @Test
-    void testInsert() {
+    void insert() {
         Patient patient = new Patient("John", "Doe", "61104071808");
         when(repository.findByTc(patient.getTc())).thenReturn(Optional.empty());
         when(repository.save(patient)).thenReturn(patient);
         Patient result = service.insert(patient);
         assertEquals(patient, result);
     }
-    
-    // it should not be allowed to insert a patient with a TC that belongs to another patient
-    @Test
-    void testInsert_WithExistingTc() {
-        Patient patient = new Patient("John", "Doe", "61104071808");
-        when(repository.findByTc(patient.getTc())).thenReturn(Optional.of(patient));
-        // invoke and verify that an IllegalStateException is thrown
-        assertThrows(IllegalStateException.class, () -> service.insert(patient));
-    }
 
     @Test
-    void testDelete() {
+    void delete() {
         long patientId = 1;
         service.delete(patientId);
-        // verify that the repository deleteById method is called with the correct ID
         verify(repository).deleteById(patientId);
     }
 
     @Test
-    void testPut() {
+    void put() {
         Patient patient = new Patient("John", "Doe", "61104071808");
         when(repository.findById(patient.getId())).thenReturn(Optional.of(patient));
         when(repository.save(patient)).thenReturn(patient);
@@ -83,7 +75,7 @@ public class PatientServiceTest {
 
     // it should not be allowed to modify a patient with nonexistent ID
     @Test
-    void testPut_WithNonExistingId() {
+    void put_WithNonExistingId() {
         Patient patient = new Patient("John", "Doe", "61104071808");
         when(repository.findById(patient.getId())).thenReturn(Optional.empty());
         assertThrows(IllegalStateException.class, () -> service.put(patient));

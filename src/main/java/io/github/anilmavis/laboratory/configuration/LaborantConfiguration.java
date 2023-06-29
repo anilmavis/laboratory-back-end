@@ -14,8 +14,8 @@ public class LaborantConfiguration {
     @Bean
     public CommandLineRunner poopulateLaborants(LaborantRepository repository) throws Exception {
         return (args) -> {
-            List<Laborant> laborants = List.of(new Laborant("John", "Doe", "6110407"),
-                                               new Laborant("Jane", "Smith", "4496928"));
+            List<Laborant> laborants = List.of(new Laborant("Sypha", "Green", "6110407"),
+                                               new Laborant("Lewis", "Tempest", "4496928"));
             repository.saveAll(laborants);
         };
     }

@@ -37,7 +37,7 @@ public class Patient {
         this.tc = tc;
     }
 
-    private Patient() {
+    public Patient() {
     }
 
     public Long getId() {

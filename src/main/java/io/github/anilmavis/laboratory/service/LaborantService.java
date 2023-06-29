@@ -22,9 +22,6 @@ public class LaborantService {
     }
 
     public Laborant insert(Laborant laborant) {
-        if (repository.findByHospitalId(laborant.getHospitalId()).isPresent()) {
-            throw new IllegalStateException("hospital ID already exists");
-        }
 
         if (!checkId(laborant.getHospitalId())) {
             throw new IllegalArgumentException("Invalid hospital ID");

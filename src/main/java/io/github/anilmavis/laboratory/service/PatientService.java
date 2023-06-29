@@ -22,10 +22,6 @@ public class PatientService {
     }
 
     public Patient insert(Patient patient) {
-        if (repository.findByTc(patient.getTc()).isPresent()) {
-            throw new IllegalStateException("TC already exists");
-        }
-
         if (!checkTc(patient.getTc())) {
             throw new IllegalArgumentException("Invalid Turkey identity number");
         }

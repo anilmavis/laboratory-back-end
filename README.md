@@ -31,7 +31,7 @@ http://localhost:8080
 ### Tests
 Tthere are unit tests but no integration tests currently, since the functionality is tested via Postman.
 ### Authorisation
-Since Basic Auth is used, the login credentials is sent for every request. Thus, HTTPS is recommended. The default credentials in the database is user:user and admin:admin. There are two roles, USER and ADMIN.
+Since Basic Auth is used, the login credentials is sent for every request. Thus, HTTPS is recommended. The default credentials in the database are user:user and admin:admin. There are two roles, USER and ADMIN.
 ### Database
 H2 embedded in-memory SQL database is used for convenience. However, it can be configured to use a file for volatile storage. The other databases such as MySQL can also be configured easily without affecting the code. There are bidirectional many-to-one relations between the patient / laborant and report tables to make the tables third normal form. There is a many to many bidirectional relationship between user and role tables. Since this project is small-scale, the report photos are stored in the database instead of file system.
 #### SQL ER Diagram

@@ -27,9 +27,6 @@ public class RoleService {
     }
 
     public Role insert(Role role) {
-        if (repository.findByName(role.getName()).isPresent()) {
-            throw new IllegalStateException("Name already exists");
-        }
         return repository.save(role);
     }
 

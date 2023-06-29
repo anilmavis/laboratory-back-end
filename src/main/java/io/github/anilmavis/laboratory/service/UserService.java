@@ -30,9 +30,6 @@ public class UserService {
     }
 
     public User insert(User user) {
-        if (repository.findByUsername(user.getUsername()).isPresent()) {
-            throw new IllegalStateException("Username already exists");
-        }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
     }
@@ -41,11 +38,11 @@ public class UserService {
         repository.deleteById(id);
     }
 
-    public void put(User user) {
+    public User put(User user) {
         if (!repository.findById(user.getId()).isPresent()) {
             throw new IllegalStateException("ID does not exist");
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        repository.save(user);
+        return repository.save(user);
     }
 }

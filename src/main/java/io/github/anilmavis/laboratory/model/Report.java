@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -50,7 +51,7 @@ public class Report {
         this.laborant = laborant;
     }
 
-    private Report() {
+    public Report() {
     }
 
     public Long getId() {

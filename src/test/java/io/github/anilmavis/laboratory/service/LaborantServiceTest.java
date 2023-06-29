@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class LaborantServiceTest {
 
     @BeforeEach
     void init() {
-        service = new LaborantService(repository);
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
@@ -43,28 +45,20 @@ public class LaborantServiceTest {
         List<Laborant> result = service.getAll();
         // verify the result
         assertEquals(laborants, result);
+        verify(repository, times(1)).findAll();
     }
 
     @Test
     void testInsert() {
         Laborant laborant = new Laborant("John", "Doe", "6110407");
-        when(repository.findByHospitalId(laborant.getHospitalId())).thenReturn(Optional.empty());
         when(repository.save(laborant)).thenReturn(laborant);
         Laborant result = service.insert(laborant);
         assertEquals(laborant, result);
-    }
-    
-    // it should not be allowed to insert a laborant with a hospital ID that belongs to another laborant
-    @Test
-    void testInsert_WithExistingHospitalId() {
-        Laborant laborant = new Laborant("John", "Doe", "6110407");
-        when(repository.findByHospitalId(laborant.getHospitalId())).thenReturn(Optional.of(laborant));
-        // invoke and verify that an IllegalStateException is thrown
-        assertThrows(IllegalStateException.class, () -> service.insert(laborant));
+        verify(repository, times(1)).save(laborant);
     }
 
     @Test
-    void testDelete() {
+    void delete() {
         long laborantId = 1;
         service.delete(laborantId);
         // verify that the repository deleteById method is called with the correct ID
@@ -72,7 +66,7 @@ public class LaborantServiceTest {
     }
 
     @Test
-    void testPut() {
+    void put() {
         Laborant laborant = new Laborant("John", "Doe", "6110407");
         when(repository.findById(laborant.getId())).thenReturn(Optional.of(laborant));
         when(repository.save(laborant)).thenReturn(laborant);
@@ -82,7 +76,7 @@ public class LaborantServiceTest {
 
     // it should not be allowed to modify a laborant with nonexistent ID
     @Test
-    void testPut_WithNonExistingId() {
+    void put_WithNonExistingId() {
         Laborant laborant = new Laborant("John", "Doe", "6110407");
         when(repository.findById(laborant.getId())).thenReturn(Optional.empty());
         assertThrows(IllegalStateException.class, () -> service.put(laborant));

@@ -37,7 +37,7 @@ public class Laborant {
         this.hospitalId = hospitalId;
     }
 
-    private Laborant() {
+    public Laborant() {
     }
 
     public Long getId() {
