@@ -1,7 +1,9 @@
 package io.github.anilmavis.laboratory.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -79,5 +81,23 @@ public class PatientServiceTest {
         Patient patient = new Patient("John", "Doe", "61104071808");
         when(repository.findById(patient.getId())).thenReturn(Optional.empty());
         assertThrows(IllegalStateException.class, () -> service.put(patient));
+    }
+
+    @Test
+    public void checkTc_withInvalidId() {
+        String invalid = "12345678902";
+        
+        boolean result = service.checkTc(invalid);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void checkTc_withValidTc() {
+        String valid = "61104071808";
+
+        boolean result = service.checkTc(valid);
+
+        assertTrue(result);
     }
 }

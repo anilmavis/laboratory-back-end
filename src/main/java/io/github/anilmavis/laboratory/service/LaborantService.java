@@ -44,7 +44,7 @@ public class LaborantService {
         repository.save(laborant);
     }
 
-    private boolean checkId(String id) {
+    public boolean checkId(String id) {
         return id.matches("[0-9]{7}");
     }
 }

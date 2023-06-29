@@ -43,7 +43,7 @@ public class PatientService {
         repository.save(patient);
     }
 
-    private boolean checkTc(String tc) {
+    public boolean checkTc(String tc) {
         // for format
         if(tc.startsWith("0") || !tc.matches("[0-9]{11}")){
             return false;
